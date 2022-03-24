@@ -7,7 +7,7 @@ import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
 
-interface Data {
+export interface Data {
   id: number;
   content: string;
   emotion: number;
@@ -82,8 +82,37 @@ export const DiaryDispatchContext = React.createContext<
   DispatchType | undefined
 >(undefined);
 
+const dummyData: Data[] = [
+  {
+    id: 1,
+    emotion: 4,
+    content: "hi~",
+    date: 1648130408643,
+  },
+  {
+    id: 2,
+    emotion: 2,
+    content: "hiru~",
+    date: 1648130408650,
+  },
+  {
+    id: 3,
+    emotion: 1,
+    content: "haru~~~",
+    date: 1648130409000,
+  },
+  {
+    id: 4,
+    emotion: 5,
+    content: "love~~~",
+    date: 1648130608643,
+  },
+];
+
 function App() {
-  const [data, dispatch] = useReducer(reducer, []);
+  const [data, dispatch] = useReducer(reducer, dummyData);
+
+  console.log(new Date().getTime());
 
   const dataId = useRef(0);
 
