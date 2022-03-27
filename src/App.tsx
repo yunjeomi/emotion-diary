@@ -112,8 +112,6 @@ const dummyData: Data[] = [
 function App() {
   const [data, dispatch] = useReducer(reducer, dummyData);
 
-  console.log(new Date().getTime());
-
   const dataId = useRef(0);
 
   //CREATE
@@ -154,6 +152,7 @@ function App() {
       },
     });
   };
+  
   return (
     <DiaryStateContext.Provider value={data}>
       <DiaryDispatchContext.Provider value={{ onCreate, onEdit, onRemove }}>

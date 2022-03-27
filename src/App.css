@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Hi+Melody&display=swap");
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #f6f6f6;
   box-sizing: border-box;
@@ -137,7 +141,7 @@ header .head_text {
 }
 
 .DiaryItem .emotion_img_wrapper_3 {
-  background-color: #fdce17
+  background-color: #fdce17;
 }
 
 .DiaryItem .emotion_img_wrapper_4 {
@@ -164,4 +168,99 @@ header .head_text {
 
 .DiaryItem .btn_wrapper {
   min-width: 70px;
+}
+
+.DiaryEditor > div:not(:last-child) {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.DiaryEditor .small_title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.DiaryEditor .date {
+  font-family: "Gowun Dodum";
+  /* font-size: 14px; */
+  border: none;
+  border-radius: 5px;
+  background-color: #ececec;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.DiaryEditor .emotion_list {
+  display: flex;
+}
+
+.DiaryEditor .emotion_list > div:not(:last-child) {
+  margin-right: 10px;
+}
+
+.DiaryEditor .newContent {
+  width: 100%;
+  min-height: 150px;
+  font-family: "Gowun Dodum";
+  background-color: #ececec;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  resize: none;
+}
+
+.DiaryEditor .btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.EmotionItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #ececec;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.EmotionItem .emotion_img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.EmotionItem img {
+  width: 80%;
+}
+
+.EmotionItem.isSelected_emotion1 {
+  font-weight: 700;
+  color: white;
+  background-color: #64c964;
+}
+
+.EmotionItem.isSelected_emotion2 {
+  font-weight: 700;
+  color: white;
+  background-color: #9dd772;
+}
+
+.EmotionItem.isSelected_emotion3 {
+  font-weight: 700;
+  color: white;
+  background-color: #fdce17;
+}
+
+.EmotionItem.isSelected_emotion4 {
+  font-weight: 700;
+  color: white;
+  background-color: #fd8446;
+}
+
+.EmotionItem.isSelected_emotion5 {
+  font-weight: 700;
+  color: white;
+  background-color: #fd565f;
 }

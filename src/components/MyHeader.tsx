@@ -1,10 +1,9 @@
 import React from "react";
-import ts, { JsxElement } from "typescript";
 
 type MyHeaderType = {
   headText: string;
-  leftChild: JSX.Element;
-  rightChild: JSX.Element;
+  leftChild?: JSX.Element;
+  rightChild?: JSX.Element;
 };
 
 const MyHeader = ({ headText, leftChild, rightChild }: MyHeaderType) => {
