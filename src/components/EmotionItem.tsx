@@ -13,7 +13,7 @@ const EmotionItem = ({ name, emotion, handleEmotion, isSelected }: EmotionItemPr
     <div className={["EmotionItem", isSelected?`isSelected_emotion${emotion}`: `emotion_off`].join(" ")} onClick={()=>handleEmotion(emotion)}>
       <div className="emotion_img">
         <img
-          src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`}
+          src={process.env.PUBLIC_URL + `/assets/emotion${emotion}.png`}
           alt="emotion"
         />
       </div>

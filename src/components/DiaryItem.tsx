@@ -23,7 +23,7 @@ const DiaryItem = ({ id, content, emotion, date }: Data) => {
       >
         {/* process.env.PUBLIC_URL: public directory의 주소 */}
         <img
-          src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`}
+          src={process.env.PUBLIC_URL + `/assets/emotion${emotion}.png`}
           alt="emotion"
         />
       </div>
