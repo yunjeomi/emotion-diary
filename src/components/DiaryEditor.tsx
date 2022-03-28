@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Data, DiaryDispatchContext } from "../App";
 import EmotionItem from "./EmotionItem";
@@ -33,8 +33,13 @@ const emotionList: EmotionType[] = [
   },
 ];
 
-const getToday = () => {
-  const newDate = new Date();
+const getToday = (originDate?: Date) => {
+  let newDate = new Date();
+
+  if (originDate) {
+    newDate = originDate;
+  }
+
   const thisYear = newDate.getFullYear();
   const thisMonth = newDate.getMonth() + 1;
   const thisDay = newDate.getDate();
@@ -64,7 +69,12 @@ const convertDateToMS = (date: string) => {
   return newDate;
 };
 
-const DiaryEditor = () => {
+type DiaryEditorType = {
+  isEdit?: boolean;
+  originData?: Data;
+};
+
+const DiaryEditor = ({ isEdit, originData }: DiaryEditorType) => {
   const navigate = useNavigate();
 
   const diaryDispatch = useContext(DiaryDispatchContext);
@@ -73,7 +83,7 @@ const DiaryEditor = () => {
     throw new Error("non diaryDispatch!");
   }
 
-  const { onCreate } = diaryDispatch;
+  const { onCreate, onEdit } = diaryDispatch;
 
   const [date, setDate] = useState<string>(getToday());
   const [content, setContent] = useState<string>("");
@@ -86,27 +96,49 @@ const DiaryEditor = () => {
   };
 
   const onSubmit = () => {
-    if(emotion === 0) {
-      alert('please choose a emotion!');
+    if (emotion === 0) {
+      alert("please choose a emotion!");
       return;
     }
     if (content.length < 1) {
-      alert('please enter your diary!');
+      alert("please enter your diary!");
       textareaRef.current?.focus();
       return;
     }
 
     const numDate = convertDateToMS(date);
 
-    onCreate(numDate, content, emotion);
+    if (
+      window.confirm(
+        isEdit ? "일기를 수정하시겠습니까?" : "일기를 추가하시겠습니까?"
+      )
+    ) {
+      if (isEdit && originData) {
+        // 수정
+        onEdit(originData?.id, content, emotion, numDate);
+      } else {
+        // 추가
+        onCreate(numDate, content, emotion);
+      }
+    }
+
     navigate("/", { replace: true });
   };
+
+  useEffect(() => {
+    if (isEdit && originData) {
+      const numDate = originData.date;
+      setDate(getToday(new Date(numDate)));
+      setContent(originData.content);
+      setEmotion(originData.emotion);
+    }
+  }, [isEdit, originData]);
 
   return (
     <div className="DiaryEditor">
       <MyHeader
         leftChild={<MyButton text="<뒤로가기" onClick={() => navigate(-1)} />}
-        headText="새로운 일기 쓰기"
+        headText={isEdit? "일기 수정" : "새로운 일기 쓰기"}
       />
       <div>
         <div className="small_title">오늘은 언제인가요?</div>
@@ -140,6 +172,7 @@ const DiaryEditor = () => {
             placeholder="오늘은 어땠나요?"
             onChange={(e) => setContent(e.target.value)}
             ref={textareaRef}
+            value={content}
           />
         </div>
       </div>
