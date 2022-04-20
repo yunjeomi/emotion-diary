@@ -5,69 +5,8 @@ import EmotionItem from "./EmotionItem";
 import MyButton from "./MyButton";
 import MyHeader from "./MyHeader";
 
-type EmotionType = {
-  name: string;
-  emotion: number;
-};
-
-const emotionList: EmotionType[] = [
-  {
-    name: "최고",
-    emotion: 1,
-  },
-  {
-    name: "좋음",
-    emotion: 2,
-  },
-  {
-    name: "보통",
-    emotion: 3,
-  },
-  {
-    name: "나쁨",
-    emotion: 4,
-  },
-  {
-    name: "최악",
-    emotion: 5,
-  },
-];
-
-const getToday = (originDate?: Date) => {
-  let newDate = new Date();
-
-  if (originDate) {
-    newDate = originDate;
-  }
-
-  const thisYear = newDate.getFullYear();
-  const thisMonth = newDate.getMonth() + 1;
-  const thisDay = newDate.getDate();
-
-  let month = thisMonth.toString();
-  let day = thisDay.toString();
-
-  if (thisMonth < 10) {
-    month = `0${thisMonth}`;
-  }
-
-  if (thisDay < 10) {
-    day = `0${thisDay}`;
-  }
-
-  const today = `${thisYear}-${month}-${day}`;
-  return today;
-};
-
-const convertDateToMS = (date: string) => {
-  const dateArr = date.split("-");
-  const year = parseInt(dateArr[0]);
-  const month = parseInt(dateArr[1]) - 1;
-  const day = parseInt(dateArr[2]);
-  const newDate = new Date(year, month, day).getTime();
-
-  return newDate;
-};
+import { convertDateToMS, getToday } from "../utils/date";
+import { emotionList } from "../utils/emotion";
 
 type DiaryEditorType = {
   isEdit?: boolean;

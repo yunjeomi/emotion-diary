@@ -26,7 +26,7 @@ const Edit = () => {
     } else {
       navigate("/", { replace: true });
     }
-  }, [diaryList, targetId]);
+  }, [diaryList, targetId, navigate]);
 
   return (
     <div className="Edit">
