@@ -19,7 +19,6 @@ const Edit = () => {
     const targetDiary = [...diaryList].find(
       (item: Data) => item.id === targetId
     );
-    console.log(targetDiary);
 
     if (targetDiary) {
       setOriginData(targetDiary);

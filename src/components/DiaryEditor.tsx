@@ -22,7 +22,7 @@ const DiaryEditor = ({ isEdit, originData }: DiaryEditorType) => {
     throw new Error("non diaryDispatch!");
   }
 
-  const { onCreate, onEdit } = diaryDispatch;
+  const { onCreate, onEdit, onRemove } = diaryDispatch;
 
   const [date, setDate] = useState<string>(getToday());
   const [content, setContent] = useState<string>("");
@@ -64,6 +64,13 @@ const DiaryEditor = ({ isEdit, originData }: DiaryEditorType) => {
     navigate("/", { replace: true });
   };
 
+  const handleRemove = () => {
+    if (window.confirm("삭제하시겠습니까?")) {
+      originData && onRemove(originData.id);
+      navigate("/", { replace: true });
+    }
+  };
+
   useEffect(() => {
     if (isEdit && originData) {
       const numDate = originData.date;
@@ -77,7 +84,12 @@ const DiaryEditor = ({ isEdit, originData }: DiaryEditorType) => {
     <div className="DiaryEditor">
       <MyHeader
         leftChild={<MyButton text="<뒤로가기" onClick={() => navigate(-1)} />}
-        headText={isEdit? "일기 수정" : "새 일기쓰기"}
+        headText={isEdit ? "일기 수정" : "새 일기쓰기"}
+        rightChild={
+          isEdit ? (
+            <MyButton text="삭제하기" type="negative" onClick={handleRemove} />
+          ) : undefined
+        }
       />
       <div>
         <div className="small_title">오늘은 언제인가요?</div>

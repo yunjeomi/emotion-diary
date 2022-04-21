@@ -169,6 +169,7 @@ header .head_btn_right {
   flex-grow: 1;
   padding: 5px;
   cursor: pointer;
+  width: 50%;
 }
 
 .DiaryItem .diary_content_preview {

@@ -23,8 +23,6 @@ const Diary = () => {
     if (diaryList.length > 0) {
       const targetDiary = diaryList.find((item) => item.id === targetId);
 
-      console.log(targetDiary);
-
       if (targetDiary) {
         // 일기 있음
         setData(targetDiary);
