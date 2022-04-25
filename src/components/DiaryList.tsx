@@ -45,7 +45,7 @@ const sortOptionList: SortOption[] = [
   },
 ];
 
-const ControlMenu = ({ value, onChange, optionList }: ControlMenuProps) => {
+const ControlMenu = React.memo(({ value, onChange, optionList }: ControlMenuProps) => {
   return (
     <select
       className="ControlMenu"
@@ -59,7 +59,7 @@ const ControlMenu = ({ value, onChange, optionList }: ControlMenuProps) => {
       ))}
     </select>
   );
-};
+});
 
 const DiaryList = ({ diaryList }: DiaryListProps) => {
   const navigate = useNavigate();

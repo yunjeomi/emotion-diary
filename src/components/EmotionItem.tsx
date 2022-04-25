@@ -22,4 +22,4 @@ const EmotionItem = ({ name, emotion, handleEmotion, isSelected }: EmotionItemPr
   );
 };
 
-export default EmotionItem;
+export default React.memo(EmotionItem);

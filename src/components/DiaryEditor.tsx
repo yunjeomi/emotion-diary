@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Data, DiaryDispatchContext } from "../App";
 import EmotionItem from "./EmotionItem";
@@ -30,9 +30,9 @@ const DiaryEditor = ({ isEdit, originData }: DiaryEditorType) => {
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleEmotion = (emotion: number) => {
+  const handleEmotion = useCallback((emotion: number) => {
     setEmotion(emotion);
-  };
+  }, []);
 
   const onSubmit = () => {
     if (emotion === 0) {
