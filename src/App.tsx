@@ -134,9 +134,11 @@ function App() {
       const diaryList = JSON.parse(localData).sort(
         (a: Data, b: Data) => a.id - b.id
       );
-      dataId.current = diaryList[0].id + 1;
 
-      dispatch({ type: "INIT", data: diaryList });
+      if(diaryList.length > 0) {
+        dataId.current = diaryList[0].id + 1;
+        dispatch({ type: "INIT", data: diaryList });
+      }
     }
   }, []);
 
