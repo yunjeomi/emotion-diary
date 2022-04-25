@@ -16,6 +16,11 @@ const Diary = () => {
   const [data, setData] = useState<Data>();
 
   useEffect(() => {
+    const titleElement = document.getElementsByTagName('title')[0];
+    titleElement.innerHTML = `Emotion Diary - ${id}`;
+  })
+
+  useEffect(() => {
     if (!diaryList) {
       throw new Error("non~~");
     }
