@@ -83,7 +83,7 @@ const DiaryEditor = ({ isEdit, originData }: DiaryEditorType) => {
   return (
     <div className="DiaryEditor">
       <MyHeader
-        leftChild={<MyButton text="<뒤로가기" onClick={() => navigate(-1)} />}
+        leftChild={<MyButton text="뒤로가기" onClick={() => navigate(-1)} />}
         headText={isEdit ? "일기 수정" : "새 일기쓰기"}
         rightChild={
           isEdit ? (

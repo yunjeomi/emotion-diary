@@ -15,7 +15,7 @@ const Edit = () => {
   useEffect(() => {
     const titleElement = document.getElementsByTagName('title')[0];
     titleElement.innerHTML = `Emotion Diary - edit ${id}`;
-  })
+  }, [id])
 
   useEffect(() => {
     if (!diaryList) {

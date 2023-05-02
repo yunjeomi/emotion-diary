@@ -13,12 +13,12 @@ const Home = () => {
   const [data, setData] = useState(Array<Data>());
   const [curDate, setCurDate] = useState(new Date());
 
-  const headText = `${curDate.getFullYear()}년-${curDate.getMonth() + 1}월`;
+  const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
 
   useEffect(() => {
     const titleElement = document.getElementsByTagName('title')[0];
     titleElement.innerHTML = `Emotion Diary`;
-  })
+  }, [])
 
   useEffect(() => {
     if (diaryList.length < 1) return;
@@ -60,7 +60,6 @@ const Home = () => {
         leftChild={<MyButton text="<" onClick={decreaseMonth} />}
         rightChild={<MyButton text=">" onClick={increaseMonth} />}
       />
-
       <DiaryList diaryList={data} />
     </div>
   );

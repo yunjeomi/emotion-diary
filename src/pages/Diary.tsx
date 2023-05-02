@@ -18,7 +18,7 @@ const Diary = () => {
   useEffect(() => {
     const titleElement = document.getElementsByTagName('title')[0];
     titleElement.innerHTML = `Emotion Diary - ${id}`;
-  })
+  }, [id])
 
   useEffect(() => {
     if (!diaryList) {
