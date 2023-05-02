@@ -27,7 +27,7 @@ body {
 }
 
 .App {
-  padding: 0 20px;
+  padding: 0 1.25rem;
 }
 
 @media (min-width: 650px) {
@@ -48,8 +48,8 @@ body {
   cursor: pointer;
   border: none;
   border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 0.6rem 1.25rem;
+  font-size: 1.1rem;
   font-family: "Gowun Dodum";
   white-space: nowrap;
 }
@@ -68,7 +68,7 @@ body {
 }
 
 header {
-  padding: 20px 0;
+  padding: 1.25rem 0;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e2e2e2;
@@ -80,7 +80,7 @@ header > div {
 
 header .head_text {
   width: 50%;
-  font-size: 25px;
+  font-size: 1.5rem;
   justify-content: center;
 }
 
@@ -98,7 +98,7 @@ header .head_btn_right {
   display: flex;
   justify-content: space-between;
 
-  margin: 20px 0;
+  margin: 1.25rem 0;
 }
 
 .DiaryList .menu_wrapper .right_col {
@@ -108,28 +108,29 @@ header .head_btn_right {
 
 .DiaryList .menu_wrapper .right_col button {
   width: 100%;
+  height: 100%;
 }
 
 .DiaryList .ControlMenu {
-  margin-right: 10px;
+  margin-right: 0.6rem;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 0.6rem 1.25rem;
   background-color: #ececec;
   cursor: pointer;
   font-family: "Gowun Dodum";
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 .DiaryItem {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0.6rem;
   border-bottom: 1px solid #e2e2e2;
 }
 
 .DiaryItem > div:not(:last-child) {
-  margin-right: 20px;
+  margin-right: 1.5rem;
 }
 
 .DiaryItem .emotion_img_wrapper {
@@ -167,13 +168,13 @@ header .head_btn_right {
 
 .DiaryItem .info_wrapper {
   flex-grow: 1;
-  padding: 5px;
+  padding: 0.3rem;
   cursor: pointer;
   width: 50%;
 }
 
 .DiaryItem .diary_content_preview {
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 .DiaryItem .btn_wrapper {
@@ -181,14 +182,14 @@ header .head_btn_right {
 }
 
 .DiaryEditor > div:not(:last-child) {
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-top: 1.25rem;
+  margin-bottom: 1.8rem;
 }
 
 .DiaryEditor .small_title {
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 0.6rem;
 }
 
 .DiaryEditor .date {
@@ -197,7 +198,7 @@ header .head_btn_right {
   border: none;
   border-radius: 5px;
   background-color: #ececec;
-  padding: 10px 15px;
+  padding: 0.6rem 1rem;
   cursor: pointer;
 }
 
@@ -206,7 +207,7 @@ header .head_btn_right {
 }
 
 .DiaryEditor .emotion_list > div:not(:last-child) {
-  margin-right: 10px;
+  margin-right: 0.6rem;
 }
 
 .DiaryEditor .newContent {
@@ -216,7 +217,7 @@ header .head_btn_right {
   background-color: #ececec;
   border: none;
   border-radius: 5px;
-  padding: 15px;
+  padding: 1rem;
   resize: none;
 }
 
@@ -231,18 +232,22 @@ header .head_btn_right {
   align-items: center;
   border-radius: 5px;
   background-color: #ececec;
-  padding: 20px;
+  padding: 1.25rem;
   cursor: pointer;
 }
 
 .EmotionItem .emotion_img {
   display: flex;
   justify-content: center;
-  margin-bottom: 5px;
+  margin-bottom: 0.3rem;
 }
 
 .EmotionItem img {
   width: 80%;
+}
+
+.EmotionItem .emotion_name {
+  text-align: center;
 }
 
 .EmotionItem.isSelected_emotion1 {
@@ -279,7 +284,7 @@ header .head_btn_right {
 
 .DiaryPage section {
   width: 100%;
-  margin-bottom: 3px;
+  margin-bottom: 0.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -295,7 +300,7 @@ header .head_btn_right {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  margin: 50px;
+  margin: 3rem;
 }
 
 .DiaryPage .diary_img_wrapper_1 {
@@ -319,7 +324,7 @@ header .head_btn_right {
 }
 
 .DiaryPage .emotion_description {
-  font-size: 25px;
+  font-size: 1.5rem;
   color: #ffffff;
 }
 
@@ -332,9 +337,65 @@ header .head_btn_right {
 }
 
 .DiaryPage .diary_content_wrapper p {
-  padding: 20px;
+  padding: 1.25rem;
   text-align: left;
-  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  header .head_text {
+    font-size: 1.3rem;
+    justify-content: center;
+  }
+
+  .MyButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .DiaryList .ControlMenu {
+    margin-right: 0.6rem;
+    padding: 0.4rem 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .DiaryEditor .small_title {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .DiaryEditor .date {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .DiaryEditor > div:not(:last-child) {
+    margin: 1rem 0;
+  }
+
+  .DiaryItem > div:not(:last-child) {
+    margin-right: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .EmotionItem {
+    padding: 1rem;
+  }
+
+  .DiaryPage .diary_img_wrapper {
+    width: 180px;
+    height: 180px;
+    margin: 1.5rem;
+  }
+
+  .DiaryPage .emotion_description {
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+
+  .DiaryPage .diary_content_wrapper p {
+    padding: 1rem;
+    font-size: 1rem;
+  }
 }
 
 
