@@ -7,15 +7,9 @@ const Edit = () => {
   const diaryList = useContext(DiaryStateContext);
 
   const navigate = useNavigate();
-  const { id } = useParams();
-  const targetId = id && parseInt(id);
+  const { id: targetId } = useParams();
 
   const [originData, setOriginData] = useState<Data>();
-
-  useEffect(() => {
-    const titleElement = document.getElementsByTagName('title')[0];
-    titleElement.innerHTML = `Emotion Diary - edit ${id}`;
-  }, [id])
 
   useEffect(() => {
     if (!diaryList) {

@@ -8,17 +8,11 @@ import { getToday } from "../utils/date";
 import { emotionList } from "../utils/emotion";
 
 const Diary = () => {
-  const { id } = useParams();
+  const { id: targetId } = useParams();
   const diaryList = useContext(DiaryStateContext);
-  const targetId = id && parseInt(id);
 
   const navigate = useNavigate();
   const [data, setData] = useState<Data>();
-
-  useEffect(() => {
-    const titleElement = document.getElementsByTagName('title')[0];
-    titleElement.innerHTML = `Emotion Diary - ${id}`;
-  }, [id])
 
   useEffect(() => {
     if (!diaryList) {

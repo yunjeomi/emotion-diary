@@ -1,6 +1,7 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import React, { useEffect, useReducer } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 
 import Home from "./pages/Home";
 import New from "./pages/New";
@@ -8,7 +9,7 @@ import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
 
 export interface Data {
-  id: number;
+  id: string;
   content: string;
   emotion: number;
   date: number;
@@ -26,12 +27,12 @@ type Create_action = {
 
 type Remove_action = {
   type: "REMOVE";
-  targetId: number;
+  targetId: string;
 };
 
 type Edit_action = {
   type: "EDIT";
-  targetId: number;
+  targetId: string;
   data: Data;
 };
 
@@ -72,9 +73,9 @@ export const DiaryStateContext = React.createContext<Data[] | undefined>(
 
 type DispatchType = {
   onCreate: (date: number, content: string, emotion: number) => void;
-  onRemove: (targetId: number) => void;
+  onRemove: (targetId: string) => void;
   onEdit: (
-    targetId: number,
+    targetId: string,
     content: string,
     emotion: number,
     date: number
@@ -87,31 +88,27 @@ export const DiaryDispatchContext = React.createContext<
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
 
-  const dataId = useRef(5);
-
   //CREATE
   const onCreate = (date: number, content: string, emotion: number) => {
     dispatch({
       type: "CREATE",
       data: {
-        id: dataId.current,
+        id: uuidv4(),
         date: new Date(date).getTime(),
         content,
         emotion,
       },
     });
-
-    dataId.current += 1;
   };
 
   //REMOVE
-  const onRemove = (targetId: number) => {
+  const onRemove = (targetId: string) => {
     dispatch({ type: "REMOVE", targetId });
   };
 
   //EDIT
   const onEdit = (
-    targetId: number,
+    targetId: string,
     content: string,
     emotion: number,
     date: number
@@ -132,11 +129,10 @@ function App() {
     const localData = localStorage.getItem("diary");
     if (localData) {
       const diaryList = JSON.parse(localData).sort(
-        (a: Data, b: Data) => a.id - b.id
+        (a: Data, b: Data) => a.date - b.date
       );
 
       if(diaryList.length > 0) {
-        dataId.current = diaryList[0].id + 1;
         dispatch({ type: "INIT", data: diaryList });
       }
     }
